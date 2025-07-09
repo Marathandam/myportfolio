@@ -1,38 +1,880 @@
-.App {
-  text-align: center;
+:root {
+  --primary-color: #00d1b2;
+  --primary-hover: #00b89c;
+  --dark-bg: #121212;
+  --light-bg: #f8f9fa;
+  --text-dark: #1a1a1a;
+  --text-muted: #444;
+  --text-light: #ffffff;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --border-radius: 8px;
+  --max-width: 1200px;
+  --section-padding: 3rem 1rem; /* Reduced from 5rem 2rem */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 1rem; /* Reduced from 1.5rem */
+}
+
+h3 {
+  font-size: clamp(1.3rem, 3vw, 2rem);
+}
+
+p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--text-muted);
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 0.7rem 1.6rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* 🔹 Navbar */
+/* ========= 🌐 Navbar Styles ========= */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #111; /* dark navbar */
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.navbar a:hover {
+  color: #00d1b2; /* turquoise */
+}
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  background-color: #00d1b2;
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+/* Add padding to body so content doesn't hide under fixed navbar */
+body {
+  padding-top: 70px;
+}
+/* ========= 🏠 Home Section ========= */
+.home {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 90vh;
+  background-color: #f4f6f8;
+  text-align: center;
+  padding: 2rem 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.home h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.8rem;
+}
+
+.home p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* ========= 💼 Projects Section ========= */
+.projects {
+  padding: 5rem 2rem;
+  background-color: #ffffff;
+}
+
+.projects .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects .section-title {
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.projects .section-subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.project-card {
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  transition: transform 0.3s ease;
+  border: 1px solid #e5e5e5;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-header {
+  margin-bottom: 1.5rem;
+}
+
+.project-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0.3rem 0;
+}
+
+.project-meta {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.project-description {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tech-pill {
+  background-color: #e3f2fd;
+  color: #0077cc;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.project-features {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.project-features li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.project-features li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #00b894;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .projects-grid {
+    flex-direction: column;
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+/* ========= 🏆 Hackathon Section ========= */
+.hackathons-section {
+  padding: 5rem 2rem;
+  background-color: #fdfdfd;
+}
+
+.hackathons-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hackathons-section .section-title {
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hackathon-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.hackathon-card:hover {
+  transform: translateY(-4px);
+}
+
+.hackathon-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.hackathon-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.hackathon-points {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.hackathon-points li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.hackathon-points li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #00b894;
+  font-size: 1.2rem;
+}
+
+/* ========== 🛠️ Current Projects Section ========== */
+.current-projects {
+  padding: 5rem 2rem;
+  background-color: #f5f7fa;
+}
+
+.current-projects .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.current-projects .section-title {
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.current-projects .projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Individual Project Card */
+.current-projects .project {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+  width: 100%;
+  max-width: 500px;
+  transition: all 0.3s ease;
+}
+
+.current-projects .project:hover {
+  transform: translateY(-4px);
+}
+
+.project h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.project-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.project-status {
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  background-color: #e8f0fe;
+  color: #1a73e8;
+}
+
+.status-active {
+  background-color: #e0f7e9;
+  color: #2e7d32;
+}
+
+.status-hackathon {
+  background-color: #fff4e5;
+  color: #ff6f00;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tech-pill {
+  background-color: rgba(0, 209, 178, 0.1);
+  color: #00b894;
+  padding: 0.4rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.project-features {
+  list-style: none;
+  padding-left: 1.2rem;
+}
+
+.project-features li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.project-features li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #00b894;
+  font-weight: bold;
+}
+
+/* ========== 📘 LeetCode & CP Section ========== */
+.leetcode {
+  padding: 5rem 2rem;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.leetcode h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.leetcode p {
+  font-size: 1rem;
+  color: #444;
+  max-width: 700px;
+  margin: 0 auto 1.2rem;
+  line-height: 1.6;
+}
+
+.leetcode ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem auto 2rem;
+  max-width: 500px;
+  text-align: left;
+}
+
+.leetcode ul li {
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 1rem;
+  color: #333;
+}
+
+.leetcode ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #00b894;
+  font-weight: bold;
+}
+
+.leetcode .btn {
+  display: inline-block;
+  background-color: #00d1b2;
+  color: #ffffff;
+  padding: 0.75rem 1.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.leetcode .btn:hover {
+  background-color: #00b89c;
+  transform: translateY(-2px);
+}
+
+/* 📬 Contact Section - Clean and Centered */
+.contact-section {
+  background-color: #121212;
+  color: #ffffff;
+  padding: 4rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-section h2 {
+  font-size: 2.2rem;
+  color: #00d1b2;
+  margin-bottom: 2rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.contact-details p {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #f1f1f1;
+}
+
+.contact-details a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.contact-details a:hover {
+  color: #00d1b2;
+}
+
+
+/* 🌗 COMPREHENSIVE DARK THEME */
+[data-theme='dark'] {
+  --light-bg: #121212;
+  --text-dark: #ffffff;
+  --text-muted: #b0b0b0;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+[data-theme='dark'] body {
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+}
+
+/* Navbar */
+[data-theme='dark'] .navbar {
+  background-color: #000000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Home Section */
+[data-theme='dark'] .home {
+  background-color: #1a1a1a;
+}
+
+[data-theme='dark'] .home h1 {
+  color: #ffffff;
+}
+
+[data-theme='dark'] .home p {
+  color: #b0b0b0;
+}
+
+/* Projects Section */
+[data-theme='dark'] .projects,
+[data-theme='dark'] .hackathons-section,
+[data-theme='dark'] .current-projects,
+[data-theme='dark'] .leetcode {
+  background-color: #1a1a1a;
+}
+
+[data-theme='dark'] .project-card,
+[data-theme='dark'] .hackathon-card,
+[data-theme='dark'] .current-projects .project {
+  background-color: #252525;
+  border-color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] .project-title,
+[data-theme='dark'] .hackathon-title,
+[data-theme='dark'] .current-projects h3,
+[data-theme='dark'] .section-title {
+  color: #ffffff;
+}
+
+[data-theme='dark'] .project-description,
+[data-theme='dark'] .hackathon-description,
+[data-theme='dark'] .project-meta,
+[data-theme='dark'] .section-subtitle,
+[data-theme='dark'] .leetcode p {
+  color: #b0b0b0;
+}
+
+[data-theme='dark'] .project-features li,
+[data-theme='dark'] .hackathon-points li,
+[data-theme='dark'] .leetcode ul li {
+  color: #d0d0d0;
+}
+
+[data-theme='dark'] .tech-pill {
+  background-color: rgba(0, 209, 178, 0.15);
+  color: #00d1b2;
+}
+
+/* Status Indicators */
+[data-theme='dark'] .project-status {
+  background-color: rgba(26, 115, 232, 0.15);
+  color: #8ab4f8;
+}
+
+[data-theme='dark'] .status-active {
+  background-color: rgba(46, 125, 50, 0.15);
+  color: #81c995;
+}
+
+[data-theme='dark'] .status-hackathon {
+  background-color: rgba(255, 111, 0, 0.15);
+  color: #ffb74d;
+}
+
+/* Contact Section */
+[data-theme='dark'] .contact-section {
+  background-color: #000000;
+  border-top: 1px solid #333;
+}
+
+[data-theme='dark'] .contact-details p {
+  color: #e0e0e0;
+}
+
+/* List Markers */
+[data-theme='dark'] .project-features li::before,
+[data-theme='dark'] .hackathon-points li::before {
+  color: var(--primary-color);
+}
+
+/* Buttons */
+[data-theme='dark'] .btn {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* LeetCode Section */
+[data-theme='dark'] .leetcode ul li::before {
+  color: var(--primary-color);
+}
+
+/* Cards Hover Effect */
+[data-theme='dark'] .project-card:hover,
+[data-theme='dark'] .hackathon-card:hover,
+[data-theme='dark'] .current-projects .project:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* 🔹 Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    gap: 1rem;
+    font-size: 0.95rem;
+    padding: 0.6rem 0;
+  }
+
+  .section {
+    padding: 2rem 1rem;
+  }
+}
+
+
+/* ========= 📱 RESPONSIVE ADJUSTMENTS ========= */
+@media (max-width: 1024px) {
+  /* General adjustments for tablets */
+  .section {
+    padding: 2.5rem 1rem;
+  }
+  
+  .projects-grid,
+  .current-projects .projects-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile landscape / small tablets */
+  html {
+    font-size: 15px;
+  }
+  
+  .navbar {
+    padding: 0.8rem 1rem;
+    gap: 1.5rem;
+  }
+  
+  body {
+    padding-top: 60px;
+  }
+  
+  .home h1 {
+    font-size: 2rem;
+  }
+  
+  .home p {
+    font-size: 1.1rem;
+  }
+  
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .project-card,
+  .hackathon-card,
+  .current-projects .project {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Mobile portrait */
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0.6rem;
+    gap: 1rem 1.5rem;
+  }
+  
+  .navbar a {
+    font-size: 0.9rem;
+  }
+  
+  .home {
+    min-height: 80vh;
+    padding: 1.5rem 1rem;
+  }
+  
+  .home h1 {
+    font-size: 1.8rem;
+  }
+  
+  .section {
+    padding: 2rem 1rem;
+  }
+  
+  .projects-grid,
+  .current-projects .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-card,
+  .hackathon-card,
+  .current-projects .project {
+    max-width: 100%;
+  }
+  
+  .tech-stack {
+    justify-content: center;
+  }
+  
+  .contact-details {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Small mobile devices */
+  html {
+    font-size: 14px;
+  }
+  
+  .navbar {
+    gap: 1rem;
+  }
+  
+  .home h1 {
+    font-size: 1.6rem;
+  }
+  
+  .home p {
+    font-size: 1rem;
+  }
+  
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .project-title,
+  .hackathon-title,
+  .current-projects h3 {
+    font-size: 1.2rem;
+  }
+  
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .contact-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .contact-details p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 360px) {
+  /* Very small devices */
+  .navbar {
+    gap: 0.8rem;
+  }
+  
+  .navbar a {
+    font-size: 0.85rem;
+  }
+  
+  .home h1 {
+    font-size: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .tech-pill {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.7rem;
+  }
+}
+@media (max-width: 480px) {
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
   }
 }
