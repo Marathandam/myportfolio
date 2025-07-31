@@ -67,6 +67,35 @@ const ProjectsSection = () => {
               <li>React frontend for UI + animation</li>
             </ul>
           </div>
+          {/* BlockDag Hackathon Build*/}
+          <div className="project-card">
+            <div className="project-header">
+              <span className="project-badge badge-winner">Finalist among 6000 developers</span>
+              <h3 className="project-title">RealEstateX – BlockDag</h3>
+              <div className="project-meta">
+                <span className="meta-award">Finalist</span>
+                <span className="meta-date">• 2025</span>
+              </div>
+            </div>
+            <p className="project-description">
+              Tokenizes real-world properties into blockchain-based NFTs and stablecoins for secure, transparent, and fractional real estate ownership, with AI-powered document verification and automated lifecycle management.
+            </p>
+            <div className="tech-stack">
+              <span className="tech-pill">Block Chain</span>
+              <span className="tech-pill">Solidity</span>
+              <span className="tech-pill">Dag</span>
+              <span className="tech-pill">Fastapi</span>
+              <span className="tech-pill">Web3.js</span>
+            </div>
+            <ul className="project-features">
+              <li>Solidity smart contracts for property NFT and stablecoin minting</li>
+              <li>AI-powered document verification using OCR and NLP</li>
+              <li>IPFS and Pinata integration for secure document storage</li>
+              <li>React frontend with wallet connection and real-time UI</li>
+              <li>End-to-end property lifecycle management on blockchain</li>
+            </ul>
+
+          </div>
         </div>
       </div>
     </section>

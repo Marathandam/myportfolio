@@ -675,6 +675,9 @@ body {
 }
 
 /* LeetCode Section */
+[data-theme='dark'] .leetcode h2 {
+  color: #e0e0e0;  /* Matches your contact section heading color */
+}
 [data-theme='dark'] .leetcode ul li::before {
   color: var(--primary-color);
 }

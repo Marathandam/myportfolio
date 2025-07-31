@@ -31,29 +31,7 @@ const CurrentProjectsSection = () => {
 
           </div>
 
-          {/* RealestateX */}
-          <div className="project">
-            <span className="project-status status-hackathon">Hackathon Build</span>
-            <h3>RealestateX</h3>
-            <p className="project-description">
-              A blockchain-powered real estate platform designed during the BlockDAG Hackathon. 
-              The platform enables tokenized property trading with stablecoin support.
-            </p>
-            
-            <div className="tech-stack">
-              <span className="tech-pill">Blockchain</span>
-              <span className="tech-pill">Solidity</span>
-              <span className="tech-pill">DAG</span>
-              <span className="tech-pill">Web3.js</span>
-            </div>
-
-            <ul className="project-features">
-              <li>DAG-based architecture for transaction scalability</li>
-              <li>Smart contracts with Solidity for property tokenization</li>
-              <li>Integrated crypto wallet and payment system</li>
-            </ul>
-
-          </div>
+        
 
           {/* Echoes of Us */}
           <div className="project">
