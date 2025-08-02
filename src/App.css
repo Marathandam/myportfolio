@@ -195,6 +195,10 @@ body {
   gap: 2rem;
 }
 
+.links{
+  color: #00b894;
+  font-size: large;
+}
 .project-card {
   background: #f9f9f9;
   border-radius: 12px;

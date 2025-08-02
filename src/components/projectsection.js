@@ -74,7 +74,8 @@ const ProjectsSection = () => {
               <h3 className="project-title">RealEstateX – BlockDag</h3>
               <div className="project-meta">
                 <span className="meta-award">Finalist</span>
-                <span className="meta-date">• 2025</span>
+                <span className="meta-date">• 2025</span><br />
+                <a href="https://real-estate-x-phi.vercel.app/" className="links" target="_blank">visit the website at https://real-estate-x-phi.vercel.app/</a>
               </div>
             </div>
             <p className="project-description">

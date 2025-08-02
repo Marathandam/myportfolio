@@ -34,6 +34,20 @@ const HackathonSection = () => {
             <li><strong>Secured Second Runner-Up</strong> position</li>
           </ul>
         </div>
+
+        {/* BlockDag International Hackathon */}
+         <div className="hackathon-card">
+          <h3 className="hackathon-title">BlockDag International Hackathon – RealEstateX</h3>
+          <p className="hackathon-description">
+Developed a decentralized real estate tokenization platform enabling property-backed NFT issuance and $HOMED stablecoin minting with AI-powered document verification.          </p>
+          <ul className="hackathon-points">
+            <li>Tech stack included TypeScript, Solidity, DAG , OCR</li>
+            <li>Used BlockDag testnet and Sepholia testnet</li>
+            <li>Backend: FastAPI , Solidity | Frontend: React+Vite+TypeScript</li>
+            <li><strong>Participated in Finals among 6000 developers worldwide</strong></li>
+          </ul>
+        </div>
+
       </div>
     </section>
   );
